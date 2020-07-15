@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather App</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Weather App</h1>
+        <div class="container" style="width: 70%;">
+            <h3>Location</h3>
+
+            <!-- Input  -->
+            <form id="form">
+                <div
+                    class="container d-flex text-center justify-content-center align-items-center"
+                    style="max-width: 70%;"
+                >
+                    <input
+                        class="text-center"
+                        name="location"
+                        value="athens"
+                        type="text"
+                        placeholder="Search City..."
+                    />
+                    <button name="location" id="button" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Location Section -->
+
+            <div
+                class="container d-flex justify-content-center align-items-center"
+            >
+                <h2 style="font-weight: 600;" class="display-1" id="city">
+                    Athens,
+                </h2>
+                <span style="font-weight: 500;" class="display-3" id="country"
+                    >GR
+                </span>
+            </div>
+
+            <!--  Temperature Location -->
+            <div class="container d-flex justify-content-center mb-4">
+                <h2
+                    style="font-weight: 600; font-family: 'Poppins';"
+                    class="display-1"
+                    id="temperature"
+                ></h2>
+                <span class="display-5" id="celsius"></span>
+                <span
+                    ><button id="reverse" class="ml-3">
+                        <i class="fas fa-undo"></i></button
+                ></span>
+            </div>
+            <!-- Description Location -->
+            <div class="container">
+                <div class="row">
+                    <div
+                        class="d-flex flex-column justify-content-center align-items-center"
+                    >
+                        <div
+                            class="d-flex justify-content-center align-items-center"
+                        >
+                            <h5 id="description">Cloudy</h5>
+                            <img
+                                class="img-fluid"
+                                id="icon"
+                                src="/images/cloudy-img.png"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="container">
+                <div class="row"></div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
