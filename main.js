@@ -10,6 +10,14 @@ const country = document.querySelector("#country");
 const celsius = document.querySelector("#celsius");
 const button = document.querySelector("#button");
 const reverse = document.querySelector("#reverse");
+const humidity = document.querySelector("#humidity");
+const windSpeed = document.querySelector("#wind-speed");
+const pressure = document.querySelector("#pressure");
+const humidityDiv = document.querySelector(".humidity");
+const windSpeedDiv = document.querySelector(".wind-speed");
+const pressureDiv = document.querySelector(".pressure");
+
+let data;
 
 // Hide our elements
 
@@ -20,6 +28,9 @@ description.innerHTML = "";
 country.innerHTML = "";
 celsius.innerHTML = "";
 reverse.style.display = "none";
+humidityDiv.innerHTML = "";
+windSpeedDiv.style.display = "none";
+pressureDiv.style.display = "none";
 
 // Event listener & Fetch
 
@@ -40,6 +51,9 @@ form.addEventListener("submit", function (e) {
                 country.textContent = "";
                 celsius.textContent = "";
                 reverse.style.display = "none";
+                humidityDiv.innerHTML = "";
+                windSpeedDiv.innerHTML = "";
+                pressureDiv.innerHTML = "";
             }
 
             // If we get correct input we make our response to JSON
@@ -49,7 +63,8 @@ form.addEventListener("submit", function (e) {
         })
 
         // We change our DOM based our API response
-        .then((data) => {
+        .then((tempData) => {
+            data = tempData;
             chooseIcon(data.weather[0].main);
             icon.style.display = "inline";
             reverse.style.display = "inline";
@@ -58,20 +73,15 @@ form.addEventListener("submit", function (e) {
             description.textContent = data.weather[0].description;
             country.textContent = data.sys.country;
             celsius.innerHTML = "&#8451";
+            humidityDiv.innerHTML = `<h4>Humidity:</h4>
+            <h3 id="humidity">${data.main.humidity}</h3>`;
+            windSpeedDiv.style.display = "block";
+            pressureDiv.style.display = "block";
+            humidity.innerHTML = data.main.humidity;
+            windSpeed.textContent = `${data.wind.speed} km/hour`;
+            pressure.textContent = data.main.pressure;
 
             // Convert Celsius/Fahrenheit
-            reverse.addEventListener("click", () => {
-                if (celsius.textContent === "℃") {
-                    celsius.innerHTML = "&#8457";
-                    temperature.textContent = (
-                        (data.main.temp * 9) / 5 +
-                        32
-                    ).toFixed(2);
-                } else {
-                    celsius.innerHTML = "&#8451";
-                    temperature.textContent = data.main.temp;
-                }
-            });
         });
 });
 
@@ -96,3 +106,14 @@ function chooseIcon(temperature) {
 function notShowIcon() {
     return (icon.style.display = "none");
 }
+
+reverse.addEventListener("click", function reverseDegrees() {
+    let degrees = data.main.temp;
+    if (celsius.textContent === "℃") {
+        celsius.innerHTML = "&#8457";
+        temperature.textContent = ((degrees * 9) / 5 + 32).toFixed(2);
+    } else {
+        temperature.textContent = degrees;
+        celsius.innerHTML = "&#8451";
+    }
+});
