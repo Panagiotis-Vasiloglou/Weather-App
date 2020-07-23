@@ -1,4 +1,4 @@
-const myKey = "0689eea5e35b2fb1c29f2bf679c7d9d9";
+const myKey = api_key;
 
 // Select our DOM elements
 
@@ -29,8 +29,57 @@ country.innerHTML = "";
 celsius.innerHTML = "";
 reverse.style.display = "none";
 humidityDiv.innerHTML = "";
-windSpeedDiv.style.display = "none";
-pressureDiv.style.display = "none";
+windSpeedDiv.innerHTML = "";
+pressureDiv.innerHTML = "";
+
+// Find Users Location Via Geolocation API
+
+window.addEventListener("load", () => {
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            console.log(position.coords);
+            const lat = position.coords.latitude;
+            const long = position.coords.longitude;
+            fetch(
+                `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${myKey}&units=metric`
+            )
+                .then((res) => res.json())
+                .then((tempData) => {
+                    data = tempData;
+                    console.log(data);
+                    chooseIcon(data.weather[0].main);
+                    icon.style.display = "inline";
+                    reverse.style.display = "inline";
+                    city.textContent = data.name + ",";
+                    temperature.textContent = data.main.temp;
+                    description.textContent = data.weather[0].description;
+                    country.textContent = data.sys.country;
+                    celsius.innerHTML = "&#8451";
+                    humidityDiv.innerHTML = `<h4>Humidity:</h4>
+            <h3 id="humidity">${data.main.humidity}</h3>`;
+                    windSpeedDiv.innerHTML = `<h4>Wind Speed:</h4>
+            <h3 id="wind-speed">${data.wind.speed} km/hour</h3>`;
+                    pressureDiv.innerHTML = `<h4>Pressure:</h4>
+            <h3 id="pressure">${data.main.pressure}</h3>`;
+                    humidity.innerHTML = data.main.humidity;
+                    windSpeed.textContent = `${data.wind.speed} km/hour`;
+                    pressure.textContent = data.main.pressure;
+                });
+        },
+        (err) => {
+            city.innerHTML = `
+            <p>Access Denied<p>
+            <p>Type location<p>
+            `;
+            icon.style.display = "none";
+            temperature.textContent = "";
+            description.textContent = "";
+            country.textContent = "";
+            celsius.textContent = "";
+            reverse.style.display = "none";
+        }
+    );
+});
 
 // Event listener & Fetch
 
@@ -51,9 +100,6 @@ form.addEventListener("submit", function (e) {
                 country.textContent = "";
                 celsius.textContent = "";
                 reverse.style.display = "none";
-                humidityDiv.innerHTML = "";
-                windSpeedDiv.innerHTML = "";
-                pressureDiv.innerHTML = "";
             }
 
             // If we get correct input we make our response to JSON
@@ -75,11 +121,13 @@ form.addEventListener("submit", function (e) {
             celsius.innerHTML = "&#8451";
             humidityDiv.innerHTML = `<h4>Humidity:</h4>
             <h3 id="humidity">${data.main.humidity}</h3>`;
-            windSpeedDiv.style.display = "block";
-            pressureDiv.style.display = "block";
+            windSpeedDiv.innerHTML = `<h4>Wind Speed:</h4>
+            <h3 id="wind-speed">${data.wind.speed} km/hour</h3>`;
+            pressureDiv.innerHTML = `<h4>Pressure:</h4>
+            <h3 id="pressure">${data.main.pressure}</h3>`;
             humidity.innerHTML = data.main.humidity;
-            windSpeed.textContent = `${data.wind.speed} km/hour`;
-            pressure.textContent = data.main.pressure;
+            windSpeed.innerHTML = `${data.wind.speed} km/hour`;
+            pressure.innerHTML = data.main.pressure;
 
             // Convert Celsius/Fahrenheit
         });
