@@ -4,7 +4,7 @@ Weather App with OpenWeather API
 ### User can type a location, checking temperature to Celsius/Fahrenheit, Humidity, Wind speed and Pressure
 
 
-![Markdown Logo](https://media2.giphy.com/media/Q7oVAvVVy8lgnNDscd/giphy.gif)
+![Markdown Logo](https://media0.giphy.com/media/hqreoq5EObEeC8NxBM/giphy.gif)
 
 
 #### Built with
