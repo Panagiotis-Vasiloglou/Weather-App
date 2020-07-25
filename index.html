@@ -13,14 +13,14 @@
             href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
         />
         <link
-            href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
             rel="stylesheet"
         />
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
         <h1>Weather App</h1>
-        <div class="container" style="width: 70%;">
+        <div id="container1" class="container" style="width: 70%;">
             <h3>Location</h3>
 
             <!-- Input  -->
@@ -45,6 +45,7 @@
             <!-- Location Section -->
 
             <div
+                id="container2"
                 class="container d-flex justify-content-center align-items-center"
             >
                 <h2 style="font-weight: 600;" class="display-1" id="city">
@@ -58,7 +59,10 @@
             <!--  Temperature Location -->
             <div class="container d-flex justify-content-center mb-4">
                 <h2
-                    style="font-weight: 600; font-family: 'Poppins';"
+                    style="
+                        font-weight: 600;
+                        font-family: 'Montserrat', sans-serif;
+                    "
                     class="display-1"
                     id="temperature"
                 ></h2>

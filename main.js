@@ -21,7 +21,7 @@ let data;
 
 // Hide our elements
 
-city.innerHTML = "Search city";
+city.innerHTML = "";
 icon.style.display = "none";
 temperature.innerHTML = "";
 description.innerHTML = "";
@@ -35,9 +35,13 @@ pressureDiv.innerHTML = "";
 // Find Users Location Via Geolocation API
 
 window.addEventListener("load", () => {
+    city.innerHTML = `
+    <p>Waiting for user's choice</p>
+    <i class="fa fa-spinner fa-spin" style="font-size:48px"></i>
+    `;
+
     navigator.geolocation.getCurrentPosition(
         (position) => {
-            console.log(position.coords);
             const lat = position.coords.latitude;
             const long = position.coords.longitude;
             fetch(
@@ -46,7 +50,7 @@ window.addEventListener("load", () => {
                 .then((res) => res.json())
                 .then((tempData) => {
                     data = tempData;
-                    console.log(data);
+
                     chooseIcon(data.weather[0].main);
                     icon.style.display = "inline";
                     reverse.style.display = "inline";
