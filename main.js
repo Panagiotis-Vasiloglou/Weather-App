@@ -81,6 +81,9 @@ window.addEventListener("load", () => {
             country.textContent = "";
             celsius.textContent = "";
             reverse.style.display = "none";
+            humidityDiv.innerHTML = "";
+            windSpeedDiv.innerHTML = "";
+            pressureDiv.innerHTML = "";
         }
     );
 });
@@ -104,6 +107,9 @@ form.addEventListener("submit", function (e) {
                 country.textContent = "";
                 celsius.textContent = "";
                 reverse.style.display = "none";
+                humidityDiv.innerHTML = "";
+                windSpeedDiv.innerHTML = "";
+                pressureDiv.innerHTML = "";
             }
 
             // If we get correct input we make our response to JSON
