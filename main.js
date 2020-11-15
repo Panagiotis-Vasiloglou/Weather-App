@@ -1,4 +1,4 @@
-const myKey = api_key;
+
 
 // Select our DOM elements
 
@@ -45,7 +45,7 @@ window.addEventListener("load", () => {
             const lat = position.coords.latitude;
             const long = position.coords.longitude;
             fetch(
-                `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${myKey}&units=metric`
+                `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=0689eea5e35b2fb1c29f2bf679c7d9d9&units=metric`
             )
                 .then((res) => res.json())
                 .then((tempData) => {
@@ -81,6 +81,9 @@ window.addEventListener("load", () => {
             country.textContent = "";
             celsius.textContent = "";
             reverse.style.display = "none";
+            humidityDiv.innerHTML = "";
+            windSpeedDiv.innerHTML = "";
+            pressureDiv.innerHTML = "";
         }
     );
 });
@@ -104,6 +107,9 @@ form.addEventListener("submit", function (e) {
                 country.textContent = "";
                 celsius.textContent = "";
                 reverse.style.display = "none";
+                humidityDiv.innerHTML = "";
+                windSpeedDiv.innerHTML = "";
+                pressureDiv.innerHTML = "";
             }
 
             // If we get correct input we make our response to JSON
