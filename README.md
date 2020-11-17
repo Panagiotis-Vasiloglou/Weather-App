@@ -1,6 +1,9 @@
 # Weather-App
 Weather App with OpenWeather API
 
+## See live version here!!
+https://happy-yonath-d03239.netlify.app
+
 ### User can type a location, checking temperature to Celsius/Fahrenheit, Humidity, Wind speed and Pressure
 ## Updated: App use Geolocation API and shows Temperature, Humidity, Wind Speed and Pressure based on user's location
 
