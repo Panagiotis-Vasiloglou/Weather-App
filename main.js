@@ -45,7 +45,7 @@ window.addEventListener("load", () => {
             const lat = position.coords.latitude;
             const long = position.coords.longitude;
             fetch(
-                `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=0689eea5e35b2fb1c29f2bf679c7d9d9&units=metric`
+                `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=0689eea5e35b2fb1c29f2bf679c7d9d9&units=metric`
             )
                 .then((res) => res.json())
                 .then((tempData) => {
@@ -95,7 +95,7 @@ form.addEventListener("submit", function (e) {
 
     myLocation = document.querySelector("input").value;
     fetch(
-        `http://api.openweathermap.org/data/2.5/weather?q=${myLocation}&APPID=${myKey}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${myLocation}&APPID=${myKey}&units=metric`
     )
         // then if we get incorrect input
         .then((info) => {
